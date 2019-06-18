@@ -776,6 +776,43 @@ const struct riscv_opcode riscv_opcodes[] =
 {"sfence.vma", 0, {"I", 0},   "s,t",  MATCH_SFENCE_VMA, MASK_SFENCE_VMA, match_opcode, 0 },
 {"wfi",        0, {"I", 0},   "",     MATCH_WFI, MASK_WFI, match_opcode, 0 },
 
+{"elb",       0, {"I", 0}, "d,o(s)",  MATCH_ELB,  MASK_ELB,  match_opcode, 0 },
+{"elh",       0, {"I", 0}, "d,o(s)",  MATCH_ELH,  MASK_ELH,  match_opcode, 0 },
+{"elw",       0, {"I", 0}, "d,o(s)",  MATCH_ELW,  MASK_ELW,  match_opcode, 0 },
+{"eld",       0, {"I", 0}, "d,o(s)",  MATCH_ELD,  MASK_ELD,  match_opcode, 0 },
+{"elbu",      0, {"I", 0}, "d,o(s)",  MATCH_ELBU, MASK_ELBU, match_opcode, 0 },
+{"elhu",      0, {"I", 0}, "d,o(s)",  MATCH_ELHU, MASK_ELHU, match_opcode, 0 },
+
+{"elq",       0, {"I", 0}, "d,o(s)",  MATCH_ELQ,  MASK_ELQ,  match_opcode, 0 },
+{"ele",       0, {"I", 0}, "L,o(s)",  MATCH_ELE,  MASK_ELE,  match_opcode, 0 }, /* L,o(s) */
+
+{"esd",       0, {"I", 0}, "t,q(s)",  MATCH_ESD,  MASK_ESD,  match_opcode, 0 },
+{"esw",       0, {"I", 0}, "t,q(s)",  MATCH_ESW,  MASK_ESW,  match_opcode, 0 },
+{"esh",       0, {"I", 0}, "t,q(s)",  MATCH_ESH,  MASK_ESH,  match_opcode, 0 },
+{"esb",       0, {"I", 0}, "t,q(s)",  MATCH_ESB,  MASK_ESB,  match_opcode, 0 },
+
+{"esq",       0, {"I", 0}, "t,q(s)",  MATCH_ESQ,  MASK_ESQ,  match_opcode, 0 },
+{"ese",       0, {"I", 0}, "Y,q(s)",  MATCH_ESE,  MASK_ESE,  match_opcode, 0 }, /* L,q(s) */
+
+{"erld",      0, {"I", 0}, "d,s,Y",   MATCH_ERLD, MASK_ERLD, match_opcode, 0 }, /* d,s,Y */
+{"erlw",      0, {"I", 0}, "d,s,Y",   MATCH_ERLW, MASK_ERLW, match_opcode, 0 }, /* d,s,Y */
+{"erlh",      0, {"I", 0}, "d,s,Y",   MATCH_ERLH, MASK_ERLH, match_opcode, 0 }, /* d,s,Y */
+{"erlhu",     0, {"I", 0}, "d,s,Y",   MATCH_ERLHU,MASK_ERLHU,match_opcode, 0 }, /* d,s,Y */
+{"erlb",      0, {"I", 0}, "d,s,Y",   MATCH_ERLB, MASK_ERLB, match_opcode, 0 }, /* d,s,Y */
+{"erlbu",     0, {"I", 0}, "d,s,Y",   MATCH_ERLBU,MASK_ERLBU,match_opcode, 0 }, /* d,s,Y */
+
+{"ersd",      0, {"I", 0}, "d,s,Y",   MATCH_ERSD, MASK_ERSD, match_opcode, 0 }, /* s,t,Y */
+{"ersw",      0, {"I", 0}, "d,s,Y",   MATCH_ERSW, MASK_ERSW, match_opcode, 0 }, /* s,t,Y */
+{"ersh",      0, {"I", 0}, "d,s,Y",   MATCH_ERSH, MASK_ERSH, match_opcode, 0 }, /* s,t,Y */
+{"ersb",      0, {"I", 0}, "d,s,Y",   MATCH_ERSB, MASK_ERSB, match_opcode, 0 }, /* s,t,Y */
+
+{"erle",      0, {"I", 0}, "L,s,Y",   MATCH_ERLE, MASK_ERLE, match_opcode, 0 }, /* L,s,Y */
+{"erse",      0, {"I", 0}, "L,s,Y",   MATCH_ERSE, MASK_ERSE, match_opcode, 0 }, /* L,t,Y */
+
+{"eaddi",     0, {"I", 0}, "d,o,y",  MATCH_EADDI, MASK_EADDI, match_opcode, 0 }, /* d,o(y) */
+{"eaddie",    0, {"I", 0}, "L,o,s",  MATCH_EADDIE,MASK_EADDIE,match_opcode, 0 }, /* L,o(s) */
+{"eaddix",    0, {"I", 0}, "L,o,y",  MATCH_EADDIX,MASK_EADDIX,match_opcode, 0 }, /* L,o(y) */
+
 /* Terminate the list.  */
 {0, 0, {0}, 0, 0, 0, 0, 0}
 };
