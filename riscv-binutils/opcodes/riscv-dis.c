@@ -40,6 +40,7 @@ struct riscv_private_data
 
 static const char * const *riscv_gpr_names;
 static const char * const *riscv_fpr_names;
+static const char * const *riscv_xbgas_names;
 
 /* Other options.  */
 static int no_aliases;	/* If set disassemble as most general inst.  */
@@ -49,6 +50,7 @@ set_default_riscv_dis_options (void)
 {
   riscv_gpr_names = riscv_gpr_names_abi;
   riscv_fpr_names = riscv_fpr_names_abi;
+  riscv_xbgas_names = riscv_xbgas_names_numeric;
   no_aliases = 0;
 }
 
@@ -61,6 +63,7 @@ parse_riscv_dis_option (const char *option)
     {
       riscv_gpr_names = riscv_gpr_names_numeric;
       riscv_fpr_names = riscv_fpr_names_numeric;
+      riscv_xbgas_names = riscv_xbgas_names_numeric;
     }
   else
     {
@@ -235,6 +238,19 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	  print (info->stream, "%s",
 		 riscv_gpr_names[EXTRACT_OPERAND (RS2, l)]);
 	  break;
+
+        case 'y':
+          print (info->stream, "%s", riscv_xbgas_names[rs1]);
+          break;
+
+        case 'Y':
+          print (info->stream, "%s",
+                 riscv_xbgas_names[EXTRACT_OPERAND (RS2, l)]);
+          break;
+
+        case 'L':
+          print (info->stream, "%s", riscv_xbgas_names[rd]);
+          break;
 
 	case 'u':
 	  print (info->stream, "0x%x",

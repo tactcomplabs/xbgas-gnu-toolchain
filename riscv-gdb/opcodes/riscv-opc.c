@@ -56,6 +56,14 @@ const char * const riscv_fpr_names_abi[NFPR] = {
   "fs8", "fs9", "fs10", "fs11", "ft8", "ft9", "ft10", "ft11"
 };
 
+const char *const riscv_xbgas_names_numeric[NGPR] =
+{
+  "e0",   "e1",   "e2",   "e3",   "e4",   "e5",   "e6",   "e7",   "e8",
+  "e9",   "e10",  "e11",  "e12",  "e13",  "e14",  "e15",  "e16",  "e17",
+  "e18",  "e19",  "e20",  "e21",  "e22",  "e23",  "e24",  "e25",  "e26",
+  "e27",  "e28",  "e29",  "e30",  "e31"
+};
+
 /* The order of overloaded instructions matters.  Label arguments and
    register arguments look the same. Instructions that can have either
    for arguments must apear in the correct order in this table for the

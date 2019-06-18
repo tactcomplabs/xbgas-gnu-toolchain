@@ -444,6 +444,7 @@ enum reg_class
   RCLASS_GPR,
   RCLASS_FPR,
   RCLASS_CSR,
+  RCLASS_XBGAS,
   RCLASS_MAX
 };
 
@@ -632,9 +633,12 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'S':	USE_BITS (OP_MASK_RS1,		OP_SH_RS1);	break;
       case 'U':	USE_BITS (OP_MASK_RS1,		OP_SH_RS1);	/* fallthru */
       case 'T':	USE_BITS (OP_MASK_RS2,		OP_SH_RS2);	break;
+      case 'L': /* fall through */
       case 'd':	USE_BITS (OP_MASK_RD,		OP_SH_RD);	break;
       case 'm':	USE_BITS (OP_MASK_RM,		OP_SH_RM);	break;
+      case 'y': /* fall through */
       case 's':	USE_BITS (OP_MASK_RS1,		OP_SH_RS1);	break;
+      case 'Y': /* fall through */
       case 't':	USE_BITS (OP_MASK_RS2,		OP_SH_RS2);	break;
       case 'r':	USE_BITS (OP_MASK_RS3,          OP_SH_RS3);     break;
       case 'P':	USE_BITS (OP_MASK_PRED,		OP_SH_PRED); break;
@@ -761,6 +765,7 @@ md_begin (void)
   hash_reg_names (RCLASS_GPR, riscv_gpr_names_abi, NGPR);
   hash_reg_names (RCLASS_FPR, riscv_fpr_names_numeric, NFPR);
   hash_reg_names (RCLASS_FPR, riscv_fpr_names_abi, NFPR);
+  hash_reg_names (RCLASS_XBGAS, riscv_xbgas_names_numeric, NGPR);
 
   /* Add "fp" as an alias for "s0".  */
   hash_reg_name (RCLASS_GPR, "fp", 8);
@@ -889,14 +894,17 @@ macro_build (expressionS *ep, const char *name, const char *fmt, ...)
     {
       switch (*fmt++)
 	{
+        case 'L':
 	case 'd':
 	  INSERT_OPERAND (RD, insn, va_arg (args, int));
 	  continue;
 
+        case 'y':
 	case 's':
 	  INSERT_OPERAND (RS1, insn, va_arg (args, int));
 	  continue;
 
+        case 'Y':
 	case 't':
 	  INSERT_OPERAND (RS2, insn, va_arg (args, int));
 	  continue;
@@ -1805,6 +1813,31 @@ rvc_lui:
 		}
 	      break;
 
+            case 'L':           /* xbgas destination register */
+            case 'y':           /* source register */
+            case 'Y':           /* target register */
+              if (reg_lookup(&s, RCLASS_XBGAS, &regno))
+              {
+                c = *args;
+                if (*s == ' ')
+                  ++s;
+                /* Now that we have assembled one operand, we use the args
+                   string to figure out where it goes in the instruction */
+                switch (C)
+                {
+                case 'y':
+                  INSERT_OPERAND (RS1, *ip, regno);
+                  break;
+                case 'L':
+                  INSERT_OPERAND (RD, *ip, regno);
+                  break;
+                case 'Y':
+                  INSERT_OPERAND (RS2, *ip, regno);
+                  break;
+                }
+                continue;
+              }
+              break;
 	    case 'd':		/* Destination register.  */
 	    case 's':		/* Source register.  */
 	    case 't':		/* Target register.  */
