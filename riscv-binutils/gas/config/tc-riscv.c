@@ -1823,7 +1823,7 @@ rvc_lui:
                   ++s;
                 /* Now that we have assembled one operand, we use the args
                    string to figure out where it goes in the instruction */
-                switch (C)
+                switch (c)
                 {
                 case 'y':
                   INSERT_OPERAND (RS1, *ip, regno);
