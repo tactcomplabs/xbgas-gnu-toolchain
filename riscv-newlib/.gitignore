@@ -22,7 +22,8 @@
 
 autom4te.cache
 config.cache
-config.h
+# This is why config.h is missing in the build
+# config.h
 config.intl
 config.log
 config.status

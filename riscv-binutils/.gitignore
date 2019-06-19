@@ -9,7 +9,8 @@
 
 *.flt
 *.gmo
-*.info
+# This is why sysroff.info is not present
+# *.info
 *.la
 *.lo
 *.o
