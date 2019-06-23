@@ -1821,6 +1821,7 @@ rvc_lui:
                 c = *args;
                 if (*s == ' ')
                   ++s;
+
                 /* Now that we have assembled one operand, we use the args
                    string to figure out where it goes in the instruction */
                 switch (c)
