@@ -817,9 +817,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"erle",      64, {"I", 0}, "L,s,Y",   MATCH_ERLE, MASK_ERLE, match_opcode, 0 }, /* L,s,Y */
 {"erse",      0, {"I", 0}, "L,s,Y",   MATCH_ERSE, MASK_ERSE, match_opcode, 0 }, /* L,t,Y */
 
-{"eaddi",     0, {"I", 0}, "d,o,y",  MATCH_EADDI, MASK_EADDI, match_opcode, 0 }, /* d,o(y) */
-{"eaddie",    0, {"I", 0}, "L,o,s",  MATCH_EADDIE,MASK_EADDIE,match_opcode, 0 }, /* L,o(s) */
-{"eaddix",    0, {"I", 0}, "L,o,y",  MATCH_EADDIX,MASK_EADDIX,match_opcode, 0 }, /* L,o(y) */
+{"eaddi",     0, {"I", 0}, "d,y,o",  MATCH_EADDI, MASK_EADDI, match_opcode, 0 }, /* d,y,o */
+{"eaddie",    0, {"I", 0}, "L,s,o",  MATCH_EADDIE,MASK_EADDIE,match_opcode, 0 }, /* L,s,o */
+{"eaddix",    0, {"I", 0}, "L,y,o",  MATCH_EADDIX,MASK_EADDIX,match_opcode, 0 }, /* L,y.o */
 
 {"eamoadd.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOADD_W,  MASK_EAMOADD_W,  match_opcode, 0 },
 {"eamoxor.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOXOR_W,  MASK_EAMOXOR_W,  match_opcode, 0 },
