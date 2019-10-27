@@ -821,6 +821,8 @@ const struct riscv_opcode riscv_opcodes[] =
 {"eaddie",    0, {"I", 0}, "L,s,o",  MATCH_EADDIE,MASK_EADDIE,match_opcode, 0 }, /* L,s,o */
 {"eaddix",    0, {"I", 0}, "L,y,o",  MATCH_EADDIX,MASK_EADDIX,match_opcode, 0 }, /* L,y.o */
 
+{"eag",      0, {"I", 0}, "d,s,t",   MATCH_EAG, MASK_EAG, match_opcode, 0 }, /* d,s,t */
+
 {"eamoadd.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOADD_W,  MASK_EAMOADD_W,  match_opcode, 0 },
 {"eamoxor.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOXOR_W,  MASK_EAMOXOR_W,  match_opcode, 0 },
 {"eamoand.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOAND_W,  MASK_EAMOAND_W,  match_opcode, 0 },
