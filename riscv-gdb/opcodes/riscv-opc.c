@@ -825,7 +825,24 @@ const struct riscv_opcode riscv_opcodes[] =
 
 {"eag",      0, {"I", 0}, "d,s,t",   MATCH_EAG, MASK_EAG, match_opcode, 0 }, /* d,s,t */
 
-{"eamoadd.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOADD_W,  MASK_EAMOADD_W,  match_opcode, 0 },
+{"eamoadd.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOADD_W,  MASK_EAMOADD_W,  match_opcode, 0 },
+{"eamoxor.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOXOR_W,  MASK_EAMOXOR_W,  match_opcode, 0 },
+{"eamoand.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOAND_W,  MASK_EAMOAND_W,  match_opcode, 0 },
+{"eamoor.w",  0, {"I", 0}, "d,s,t",  MATCH_EAMOOR_W,   MASK_EAMOOR_W,   match_opcode, 0 },
+{"eamomin.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOMIN_W,  MASK_EAMOMIN_W,  match_opcode, 0 },
+{"eamomax.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOMAX_W,  MASK_EAMOMAX_W,  match_opcode, 0 },
+{"eamocas.w", 0, {"I", 0}, "d,s,t",  MATCH_EAMOCAS_W,  MASK_EAMOCAS_W,  match_opcode, 0 },
+
+{"eamoadd.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOADD_D,  MASK_EAMOADD_D,  match_opcode, 0 },
+{"eamoxor.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOXOR_D,  MASK_EAMOXOR_D,  match_opcode, 0 },
+{"eamoand.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOAND_D,  MASK_EAMOAND_D,  match_opcode, 0 },
+{"eamoor.d",  0, {"I", 0}, "d,s,t",  MATCH_EAMOOR_D,   MASK_EAMOOR_D,   match_opcode, 0 },
+{"eamomin.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOMIN_D,  MASK_EAMOMIN_D,  match_opcode, 0 },
+{"eamomax.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOMAX_D,  MASK_EAMOMAX_D,  match_opcode, 0 },
+{"eamocas.d", 0, {"I", 0}, "d,s,t",  MATCH_EAMOCAS_D,  MASK_EAMOCAS_D,  match_opcode, 0 },
+
+
+/*{"eamoadd.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOADD_W,  MASK_EAMOADD_W,  match_opcode, 0 },
 {"eamoxor.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOXOR_W,  MASK_EAMOXOR_W,  match_opcode, 0 },
 {"eamoand.w", 0, {"I", 0}, "d,t,s",  MATCH_EAMOAND_W,  MASK_EAMOAND_W,  match_opcode, 0 },
 {"eamoor.w",  0, {"I", 0}, "d,t,s",  MATCH_EAMOOR_W,   MASK_EAMOOR_W,   match_opcode, 0 },
@@ -840,6 +857,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"eamomin.d", 0, {"I", 0}, "d,t,s",  MATCH_EAMOMIN_D,  MASK_EAMOMIN_D,  match_opcode, 0 },
 {"eamomax.d", 0, {"I", 0}, "d,t,s",  MATCH_EAMOMAX_D,  MASK_EAMOMAX_D,  match_opcode, 0 },
 {"eamocas.d", 0, {"I", 0}, "d,t,s",  MATCH_EAMOCAS_D,  MASK_EAMOCAS_D,  match_opcode, 0 },
+*/
 
 /* Terminate the list.  */
 {0, 0, {0}, 0, 0, 0, 0, 0}
